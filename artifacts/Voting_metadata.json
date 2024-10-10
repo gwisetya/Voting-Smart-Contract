@@ -52,6 +52,11 @@
 				"type": "error"
 			},
 			{
+				"inputs": [],
+				"name": "voting__thereIsATie",
+				"type": "error"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -187,19 +192,6 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "winningProposal",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "proposalIndex",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -230,11 +222,11 @@
 	},
 	"sources": {
 		"Voting.sol": {
-			"keccak256": "0x87bfc39e9ae7efd9607b66bae52eb3ece94fa9381a64ecd4e41bebffe61f0993",
+			"keccak256": "0xdbc9b22190e500befb5259908ba3eaa3411652f8ad8af0eb8e81073f1244b16b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://1ec16518b43d19845e85d5c4d48421cf958b0e0570cc13ffde028f48002e1dd8",
-				"dweb:/ipfs/QmWUYeDpBVcKCUtVRPfG9R8LW2Xf93jPSaKkV3SjrWR9LU"
+				"bzz-raw://9aad343b9c4bff1f4bf021681ffdc174df2e9fce5e69cfddc556f33f007a83d3",
+				"dweb:/ipfs/QmZBQTaYKiuyGyc9bpopxzQz1qsfVVajz1a4NTgSdDM5ep"
 			]
 		}
 	},

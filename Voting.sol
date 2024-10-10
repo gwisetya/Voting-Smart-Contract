@@ -10,6 +10,7 @@ contract Voting{
     error voting__cannotDelegateOneself(); 
     error voting__loopInDelegation(); 
     error voting__proposalNotFound(); 
+    error voting__thereIsATie(); 
 
     /*Structs*/
     struct Voter{
@@ -90,7 +91,8 @@ contract Voting{
         voters[msg.sender].voted = true; // sets the voted of the voter to true, indicating that the voter has already voted
     }
 
-    function winningProposal() public view returns(uint proposalIndex){
+    function winningProposal() internal view returns(uint proposalIndex){
+        require(!tie(), voting__thereIsATie());
         // this function finds the index of the winning proposal 
         uint highestVoteCount = 0; //keep track of the proposal with the most vote count
         uint winnerIndex = 0; // keep track of the index of the proposal with the most vote count
@@ -108,6 +110,24 @@ contract Voting{
         // returns the name of the proposal with the most voteCount
         // uses the winningProposal() function to get the index of the winning proposal 
         WinnerName = proposals[winningProposal()].name; 
+    }
+
+    function tie() internal view returns(bool){
+        uint256 highestVoteCount;
+        uint256 NumberOfProposalWithHighestVoteCount; 
+        for(uint i=0 ; i < proposals.length; i++){
+            // this for loop finds the index of the proposal with the highest voteCount
+            if(proposals[i].voteCount > highestVoteCount){
+                highestVoteCount = proposals[i].voteCount; 
+            }
+        }
+        for(uint i=0 ; i < proposals.length; i++){
+            // this for loop finds the index of the proposal with the highest voteCount
+            if(proposals[i].voteCount == highestVoteCount){
+                NumberOfProposalWithHighestVoteCount++;
+            }
+        }
+        return NumberOfProposalWithHighestVoteCount > 1;
     }
 
     /*Getters*/
